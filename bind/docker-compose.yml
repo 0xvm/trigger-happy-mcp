@@ -1,0 +1,14 @@
+services:
+  mcp-server:
+    build: .
+    container_name: zeromcp-mcp-server
+    ports:
+      - "12983:12983"
+    # For live-editing server.py on the host during dev, uncomment this:
+    # volumes:
+    #   - ./server.py:/app/server.py:ro
+    environment:
+      # Ensures logs are flushed immediately (good for dev)
+      PYTHONUNBUFFERED: "1"
+    restart: unless-stopped
+
